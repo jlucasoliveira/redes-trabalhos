@@ -1,23 +1,23 @@
 from socket import *
 from datetime import datetime
-import select
+import time
 
-serverName = 'localhost'
-serverPort = 12000
+
+HOST = 'localhost'
+PORTA = 12000
 
 clientSocket = socket(AF_INET, SOCK_DGRAM)
-
-for i in range(1,10):
-	try:
-		mensagem = 'Ping {} {}'.format(i, datetime.now())
-		clientSocket.sendto(mensagem.encode(),(serverName, serverPort))
-		clientSocket.settimeout(1)
-		modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
-
-		print(modifiedMessage)
-	except socket.timeout:
-		print("DEU RUIM")
-
+clientSocket.settimeout(1)
+for i in range(1, 11):
+    try:
+        mensagem = 'Ping {} {}.'.format(i, time.ctime())
+        start = time.time()
+        clientSocket.sendto(mensagem.encode(), (HOST, PORTA))
+        modifiedMessage, serverAddress = clientSocket.recvfrom(1024)
+        end = time.time()
+        print("\n" + modifiedMessage.decode())
+        print("RTT: {0:.7f}".format(end-start))
+    except timeout:
+        print("Solicitação {} expirada.".format(i))
 
 clientSocket.close()
-

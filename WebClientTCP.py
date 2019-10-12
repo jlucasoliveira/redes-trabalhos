@@ -13,7 +13,7 @@ client_socket = socket(AF_INET, SOCK_STREAM)
 client_socket.connect((servidor_host, servidor_porta))
 (addr, porta) = client_socket.getsockname()
 
-cabecalho_http_requisicao = 'GET /{} HTTP/1.1\r\nHost: {}:{}\r\nUser-Agent: Client_Python/0.1\r\n\r\n'.format(
+cabecalho_http_requisicao = 'GET /{} HTTP/1.1\r\nHost: {}:{}\r\nUser-Agent: Client_Python/0.2\r\n\r\n'.format(
     arquivo_requisitado,
     addr,
     porta
