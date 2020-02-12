@@ -1,5 +1,4 @@
 from socket import *
-from datetime import datetime
 import time
 
 
@@ -18,6 +17,6 @@ for i in range(1, 11):
         print("\n" + modifiedMessage.decode())
         print("RTT: {0:.7f}".format(end-start))
     except timeout:
-        print("Solicitação {} expirada.".format(i))
+        print("Solicitacao {} expirada.".format(i))
 
 clientSocket.close()
